@@ -3,8 +3,11 @@ A simple counter application created with Fyne + GoLang
 
 ## ToDo
 - [x] Basic Increase and Decrease buttons
-- [ ] Settings dialog or window for setting up counting step(s) default is 1
+- [ ] Settings dialog or window for setting up 
+    - [ ] counting step(s) - default is 1
+    - [ ] enable or disable duration calculation
 - [ ] Get duration for each count number change
+- [ ] Add keyboard shortcut for updating counter therefore
 - [ ] More...
 
 ## Local run and build
