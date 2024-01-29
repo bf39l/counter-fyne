@@ -23,3 +23,9 @@ go install fyne.io/fyne/v2/cmd/fyne@latest
 # macOS
 fyne package --os darwin
 ```
+## General problem
+- macOS block application to launch with err: "Counter - Fyne.app" is damaged and can’t be opened. You should move it to the Bin
+    ```bash
+    # Could add attribute like follow
+    xattr -rc ~/path/to/Counter\ -\ Fyne.app
+    ```

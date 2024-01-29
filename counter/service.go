@@ -70,6 +70,7 @@ func (c *CounterSvc) btnClick(mul int) func() {
 func (c *CounterSvc) btnClickSettings() func() {
 	return func() {
 		notImplementedDialog := dialog.NewInformation("Settings", "Not Implemented yet", c.Gui.Window)
+		notImplementedDialog.Resize(fyne.NewSize(50, 50))
 		notImplementedDialog.Show()
 	}
 }
