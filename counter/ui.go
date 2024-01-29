@@ -12,7 +12,7 @@ func initialCounterUI(app *fyne.App) (*counterUI, *counterSettings) {
 		label:       generateTextLabel(),
 		btnPlus:     widget.NewButtonWithIcon("", theme.ContentAddIcon(), nil),
 		btnMinus:    widget.NewButtonWithIcon("", theme.ContentRemoveIcon(), nil),
-		settingsBtn: widget.NewButtonWithIcon("", theme.SettingsIcon(), nil),
+		btnSettings: widget.NewButtonWithIcon("", theme.SettingsIcon(), nil),
 		app:         app,
 	}
 	settings := &counterSettings{}

@@ -15,8 +15,9 @@ type counterUI struct {
 	label       *canvas.Text
 	btnPlus     *widget.Button
 	btnMinus    *widget.Button
-	settingsBtn *widget.Button
+	btnSettings *widget.Button
 	app         *fyne.App
+	Window      fyne.Window
 }
 
 type counterSettings struct {

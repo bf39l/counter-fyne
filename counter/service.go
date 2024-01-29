@@ -5,6 +5,7 @@ import (
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/dialog"
 )
 
 func NewCounterService(app *fyne.App) *CounterSvc {
@@ -13,23 +14,31 @@ func NewCounterService(app *fyne.App) *CounterSvc {
 		step:  1,
 	}
 	ui, _ := initialCounterUI(app)
-
-	return &CounterSvc{
+	svc := &CounterSvc{
 		Data: data,
 		Gui:  ui,
 	}
+	svc.Gui.Window = svc.createUIWindow()
+	svc.bindBtnEvts()
+
+	return svc
 }
 
-func (c *CounterSvc) CreateUIWindow() fyne.Window {
+func (c *CounterSvc) bindBtnEvts() {
+	// Update btn tap func
+	c.Gui.btnPlus.OnTapped = c.btnClick(1)
+	c.Gui.btnMinus.OnTapped = c.btnClick(-1)
+
+	c.Gui.btnSettings.OnTapped = c.btnClickSettings()
+	// TODO:
+}
+
+func (c *CounterSvc) createUIWindow() fyne.Window {
 	window := (*c.Gui.app).NewWindow("Counter")
 	window.Resize(fyne.Size{Height: 120, Width: 255})
 
 	// Reset Label
 	c.Gui.label.Text = fmt.Sprintf("%d", c.Data.count)
-	// Update btn tap func
-	c.Gui.btnPlus.OnTapped = c.btnClick(1)
-	c.Gui.btnMinus.OnTapped = c.btnClick(-1)
-	// TODO update settings btn tap func
 
 	// Group UI elements
 	// Top, Btm, Left, Right, Others...
@@ -40,7 +49,7 @@ func (c *CounterSvc) CreateUIWindow() fyne.Window {
 				c.Gui.btnPlus, c.Gui.btnMinus,
 			),
 		),
-		c.Gui.settingsBtn,
+		c.Gui.btnSettings,
 		nil,
 		nil,
 	)
@@ -55,6 +64,13 @@ func (c *CounterSvc) btnClick(mul int) func() {
 		c.updateCount(mul)
 		c.Gui.label.Text = fmt.Sprintf("%d", c.Data.count)
 		c.Gui.label.Refresh()
+	}
+}
+
+func (c *CounterSvc) btnClickSettings() func() {
+	return func() {
+		notImplementedDialog := dialog.NewInformation("Settings", "Not Implemented yet", c.Gui.Window)
+		notImplementedDialog.Show()
 	}
 }
 

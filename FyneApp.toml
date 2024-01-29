@@ -1,0 +1,8 @@
+Website = "https://github.com/bf39l/counter-fyne"
+
+[Details]
+  Icon = "assets/Icon.png"
+  Name = "Counter - Fyne"
+  ID = "com.bf39l.counterfyne"
+  Version = "0.0.1"
+  Build = 3
