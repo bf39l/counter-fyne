@@ -3,10 +3,12 @@ A simple counter application created with Fyne + GoLang
 
 ## ToDo
 - [x] Basic Increase and Decrease buttons
+- [ ] Reset button for counter
 - [ ] Settings dialog or window for setting up 
     - [x] counting step(s) - default is 1
     - [ ] enable or disable duration calculation
 - [ ] Get duration for each count number change
+    - more timing related todos will be created
 - [ ] Add keyboard shortcut for updating counter therefore
 - [ ] More...
 
