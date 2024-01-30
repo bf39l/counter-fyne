@@ -7,7 +7,7 @@ A simple counter application created with Fyne + GoLang
 I would like to use a counter for counting how many sets I did in gym training. Of course I could use an existing counter from web but I would also want to track how long I took to finish each set which exsting counter does not fit my requirements. Also I want the application has to be controlled by a "remote" (I may build a bluetooth/wireless two buttons macro pad as remote control) therefore I don't need to touch laptop/device with sweaty hands.
 
 #### Why fyne + golang
-I am working for a company which use golang to do backend web services. So keeping practising golang is one of purpose. Regarding GUI I did some researches and found out fyne is a rising staring and really easy to use.
+I am working for a company which use golang to do backend web services. So keeping practising golang is one of purpose. Regarding GUI I did some researches and found out fyne is a rising star and really easy to use.
 
 ## ToDo
 - [x] Basic Increase and Decrease buttons
