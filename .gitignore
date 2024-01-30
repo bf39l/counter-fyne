@@ -20,4 +20,5 @@
 # Go workspace file
 go.work
 .DS_Store
-Counter - Fyne.app.tar.gz
+*.app.tar.gz
+Counter - Fyne.app/*
