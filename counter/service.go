@@ -3,6 +3,7 @@ package counter
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -93,7 +94,7 @@ func (c *CounterSvc) updateCount(mul int) {
 func (c *CounterSvc) settingsCallback() func(isSave bool) {
 	return func(isSave bool) {
 		if isSave {
-			stepStr := c.Gui.settings.items["step"].Widget.(*widget.Entry).Text
+			stepStr := strings.ReplaceAll(c.Gui.settings.items["step"].Widget.(*widget.Entry).Text, " ", "")
 			step, _ := strconv.ParseInt(stepStr, 10, 64)
 			c.Data.step = int(step)
 		}
