@@ -4,5 +4,5 @@ Website = "https://github.com/bf39l/counter-fyne"
   Icon = "assets/Icon.png"
   Name = "Counter - Fyne"
   ID = "com.bf39l.counterfyne"
-  Version = "0.0.1"
-  Build = 3
+  Version = "0.0.1-alpha"
+  Build = 1

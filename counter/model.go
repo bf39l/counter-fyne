@@ -18,9 +18,11 @@ type counterUI struct {
 	btnSettings *widget.Button
 	app         *fyne.App
 	Window      fyne.Window
+	settings    *counterSettings
 }
 
 type counterSettings struct {
+	items map[string]*widget.FormItem
 }
 
 type CounterSvc struct {
