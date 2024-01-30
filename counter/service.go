@@ -2,10 +2,12 @@ package counter
 
 import (
 	"fmt"
+	"strconv"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/widget"
 )
 
 func NewCounterService(app *fyne.App) *CounterSvc {
@@ -13,7 +15,7 @@ func NewCounterService(app *fyne.App) *CounterSvc {
 		count: 0,
 		step:  1,
 	}
-	ui, _ := initialCounterUI(app)
+	ui := initialCounterUI(app)
 	svc := &CounterSvc{
 		Data: data,
 		Gui:  ui,
@@ -35,7 +37,7 @@ func (c *CounterSvc) bindBtnEvts() {
 
 func (c *CounterSvc) createUIWindow() fyne.Window {
 	window := (*c.Gui.app).NewWindow("Counter")
-	window.Resize(fyne.Size{Height: 120, Width: 255})
+	window.Resize(fyne.Size{Height: 240, Width: 300})
 
 	// Reset Label
 	c.Gui.label.Text = fmt.Sprintf("%d", c.Data.count)
@@ -69,9 +71,18 @@ func (c *CounterSvc) btnClick(mul int) func() {
 
 func (c *CounterSvc) btnClickSettings() func() {
 	return func() {
-		notImplementedDialog := dialog.NewInformation("Settings", "Not Implemented yet", c.Gui.Window)
-		notImplementedDialog.Resize(fyne.NewSize(50, 50))
-		notImplementedDialog.Show()
+		// notImplementedDialog := dialog.NewInformation("Settings", "Not Implemented yet", c.Gui.Window)
+		// notImplementedDialog.Resize(fyne.NewSize(50, 50))
+		// notImplementedDialog.Show()
+		items := []*widget.FormItem{}
+
+		c.Gui.settings.items["step"].Widget.(*widget.Entry).Text = fmt.Sprintf("%d", c.Data.step)
+		items = append(items, c.Gui.settings.items["step"])
+
+		f := dialog.NewForm(
+			"Settings", "Save", "Cancel", items, c.settingsCallback(), c.Gui.Window)
+		f.Resize(fyne.Size{Width: 100, Height: 100})
+		f.Show()
 	}
 }
 
@@ -79,6 +90,12 @@ func (c *CounterSvc) updateCount(mul int) {
 	c.Data.count = c.Data.count + mul*c.Data.step
 }
 
-func (u *CounterSvc) updateUI() {
-	// TODO
+func (c *CounterSvc) settingsCallback() func(isSave bool) {
+	return func(isSave bool) {
+		if isSave {
+			stepStr := c.Gui.settings.items["step"].Widget.(*widget.Entry).Text
+			step, _ := strconv.ParseInt(stepStr, 10, 64)
+			c.Data.step = int(step)
+		}
+	}
 }
